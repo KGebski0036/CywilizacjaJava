@@ -3,8 +3,10 @@ package pl.edu.ezse.Cywilizacja.Services.Implementations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Service;
+import pl.edu.ezse.Cywilizacja.Database.IUserLvlsOfBuildingsRepository;
 import pl.edu.ezse.Cywilizacja.Database.IUsersResourcesInGameRepository;
 import pl.edu.ezse.Cywilizacja.Database.IUserRepository;
+import pl.edu.ezse.Cywilizacja.Model.LvlsOfBuildings;
 import pl.edu.ezse.Cywilizacja.Model.User;
 import pl.edu.ezse.Cywilizacja.Model.UserResoucesInGame;
 import pl.edu.ezse.Cywilizacja.Services.IAuteticationService;
@@ -20,6 +22,8 @@ public class AutenticationService implements IAuteticationService {
     IUserRepository userRepository;
     @Autowired
     IUsersResourcesInGameRepository userResourcesRepository;
+    @Autowired
+    IUserLvlsOfBuildingsRepository userLvlsOfBuildingsRepository;
 
     @Resource
     SesionObject sessionObject;
@@ -55,8 +59,17 @@ public class AutenticationService implements IAuteticationService {
         UserResoucesInGame userResoucesInGame = new UserResoucesInGame();
         userResoucesInGame.setUser(user);
         userResourcesRepository.save(userResoucesInGame);
+
+        LvlsOfBuildings lvlsOfBuildings = new LvlsOfBuildings();
+        lvlsOfBuildings.setUser(user);
+        userLvlsOfBuildingsRepository.save(lvlsOfBuildings);
+
         Optional<UserResoucesInGame> userResouces = userResourcesRepository.findUserResoucesInGameByUser(user);
         user.setUserResoucesInGame(userResouces.get());
+
+        Optional<LvlsOfBuildings> userBuildings = userLvlsOfBuildingsRepository.findLvlsOfBuildingsByUser(user);
+        user.setLvlsOfBuildings(userBuildings.get());
+
         return true;
     }
 }

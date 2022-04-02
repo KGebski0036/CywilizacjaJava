@@ -23,9 +23,16 @@ function load(){
 
 window.onload = load;
 
+var currentBuilding;
+var currentImg;
+var currentWatherCost;
+var currentFoodCost;
+
 function TownHailClicked()
 {
-    ShowHelperWindow("Town hall", "townhail.png", "Zbudowanie twierdzy pozwoli na zbudowanie innych budowli oraz zwiększenie maksymalnej liczby zasobów.");
+    ShowHelperWindow("TownHall", "townhail.png", "Zbudowanie twierdzy pozwoli na zbudowanie innych budowli oraz zwiększenie maksymalnej liczby zasobów.");
+    currentWatherCost = -20;
+    currentFoodCost = -20;
 }
 function CloseHelperWindow()
 {
@@ -38,8 +45,17 @@ function ShowHelperWindow(title, img, text){
     var imgEl = document.getElementById("ViewImgScr");
     var textEl = document.getElementById("TextInWindow");
 
+    currentBuilding = title;
+    currentImg = img;
+
     titleEl.innerText = title;
     imgEl.src = "image//buildings/" + img;
     textEl.innerText = text;
     window.style.display = "block";
+}
+function BuildBilding(){
+    var building = document.getElementById(currentBuilding);
+    building.style.backgroundImage = "url('image/buildings/townhail.png')";
+    building.children[0].innerText = "";
+    CloseHelperWindow();
 }

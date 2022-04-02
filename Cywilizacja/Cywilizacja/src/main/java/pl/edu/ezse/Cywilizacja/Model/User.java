@@ -14,6 +14,17 @@ public class User {
     @OneToOne()
     private UserResoucesInGame userResoucesInGame;
 
+    @OneToOne()
+    private LvlsOfBuildings lvlsOfBuildings;
+
+    public LvlsOfBuildings getLvlsOfBuildings() {
+        return lvlsOfBuildings;
+    }
+
+    public void setLvlsOfBuildings(LvlsOfBuildings lvlsOfBuildings) {
+        this.lvlsOfBuildings = lvlsOfBuildings;
+    }
+
     public User() {
     }
 
