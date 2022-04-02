@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface IUserDAO {
     List<User> getUsers();
-    Optional<User> getUserByLogin(String login);
+    Optional<User> findUserByLogin(String login);
     void addUser(User user);
     User getUserById(int id);
 }

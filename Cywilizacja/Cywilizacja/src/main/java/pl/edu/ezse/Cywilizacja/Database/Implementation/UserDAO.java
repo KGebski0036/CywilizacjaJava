@@ -1,10 +1,17 @@
 package pl.edu.ezse.Cywilizacja.Database.Implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import pl.edu.ezse.Cywilizacja.Database.IUserDAO;
+import pl.edu.ezse.Cywilizacja.Model.User;
 
-import java.sql.Connection;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-public class UserDAO {
+
+public class UserDAO implements IUserDAO {
     @Autowired
     Connection connection;
 
@@ -19,11 +26,9 @@ public class UserDAO {
 
             while (rs.next()) {
                 User user = new User();
-                user.setId(rs.getInt("id"));
+                user.setId(rs.getLong("id"));
                 user.setLogin(rs.getString("login"));
-                user.setName(rs.getString("name"));
                 user.setPassword(rs.getString("password"));
-                user.setSurname(rs.getString("surname"));
 
                 result.add(user);
             }
@@ -36,7 +41,7 @@ public class UserDAO {
     }
 
     @Override
-    public Optional<User> getUserByLogin(String login) {
+    public Optional<User> findUserByLogin(String login) {
         try {
             String sql = "SELECT * FROM tuser WHERE login = ?";
 
@@ -48,11 +53,9 @@ public class UserDAO {
 
             if(rs.next()) {
                 User user = new User();
-                user.setId(rs.getInt("id"));
+                user.setId(rs.getLong("id"));
                 user.setLogin(rs.getString("login"));
-                user.setName(rs.getString("name"));
                 user.setPassword(rs.getString("password"));
-                user.setSurname(rs.getString("surname"));
 
                 return Optional.of(user);
             } else {
@@ -72,17 +75,15 @@ public class UserDAO {
             String sql = "INSERT INTO tuser VALUES (NULL, ?, ?, ?, ?)";
 
             PreparedStatement ps = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, user.getName());
-            ps.setString(2, user.getSurname());
-            ps.setString(3, user.getLogin());
-            ps.setString(4, user.getPassword());
+            ps.setString(1, user.getLogin());
+            ps.setString(2, user.getPassword());
 
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();
 
             rs.next();
-            user.setId(rs.getInt(1));
+            user.setId(rs.getLong(1));
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -99,13 +100,11 @@ public class UserDAO {
 
             ResultSet rs = ps.executeQuery();
 
-            if(rs.next()) {
+            if (rs.next()) {
                 User user = new User();
-                user.setId(rs.getInt("id"));
+                user.setId(rs.getLong("id"));
                 user.setLogin(rs.getString("login"));
-                user.setName(rs.getString("name"));
                 user.setPassword(rs.getString("password"));
-                user.setSurname(rs.getString("surname"));
 
                 return user;
             } else {
@@ -116,4 +115,5 @@ public class UserDAO {
         }
 
         return null;
+    }
 }

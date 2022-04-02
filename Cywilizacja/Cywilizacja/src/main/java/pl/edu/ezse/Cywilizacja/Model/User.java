@@ -1,24 +1,26 @@
 package pl.edu.ezse.Cywilizacja.Model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Entity(name = "urzytkownicy")
+@Entity
+@Table(name = "uzytkownicy")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String login;
     private String password;
+
+    @OneToOne()
+    private UserResoucesInGame userResoucesInGame;
 
     public User() {
     }
 
-    public User(String login, String password) {
+    public User(String login, String password, UserResoucesInGame userResoucesInGame) {
         this.login = login;
         this.password = password;
+        this.userResoucesInGame = userResoucesInGame;
     }
 
     public String getPassword() {
@@ -37,11 +39,19 @@ public class User {
         this.login = login;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public UserResoucesInGame getUserResoucesInGame() {
+        return userResoucesInGame;
+    }
+
+    public void setUserResoucesInGame(UserResoucesInGame userResoucesInGame) {
+        this.userResoucesInGame = userResoucesInGame;
     }
 }

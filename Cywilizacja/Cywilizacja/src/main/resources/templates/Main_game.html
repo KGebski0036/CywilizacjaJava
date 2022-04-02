@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Osadnicy</title>
+    <link rel="stylesheet" href="/mainStyle.css">
+    <script src="/script.js"></script>
+</head>
+<body>
+    <div id="contener">
+        <div id="bars">
+            <div class="resource_icon">
+                <img height="50px" width="50px" src="image/resource_icons/woda.png">
+            </div>>
+            <div class="progress-bar">
+                <div th:attr="data-size=${user.userResoucesInGame.water}" class="progress" id="waterBar"></div>
+            </div>
+            <div class="resource_icon">
+                <img height="50px" width="50px" src="image/resource_icons/zywnosc.png">
+            </div>>
+            <div class="progress-bar">
+                <div th:attr="data-size=${user.userResoucesInGame.food}" class="progress" id = "foodBar"></div>
+            </div>
+            <div class="resource_icon">
+                <img height="50px" width="50px" src="image/resource_icons/wood.webp">
+            </div>>
+            <div class="progress-bar">
+                <div th:attr="data-size=${user.userResoucesInGame.wood}" class="progress" id = "woodBar"></div>
+            </div>
+            <div class="resource_icon">
+                <img height="50px" width="50px" src="image/resource_icons/stone.webp">
+            </div>>
+            <div class="progress-bar">
+                <div th:attr="data-size=${user.userResoucesInGame.stone}" class="progress" id = "stoneBar"></div>
+            </div>
+            <div class="resource_icon">
+                <img height="50px" width="50px" src="image/resource_icons/gold.png">
+            </div>>
+            <div class="progress-bar">
+                <div th:attr="data-size=${user.userResoucesInGame.gold}" class="progress" id = "goldBar"></div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
