@@ -1,0 +1,84 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+#title{
+    background-color: rgb(32, 32, 32);
+    color: rgb(99, 153, 235);
+    text-align: center;
+    font-size: 30px;
+    font-weight: 900;
+    padding: 50px;
+}
+
+#Logowanie{
+    float: left;
+    background-color: rgb(164, 175, 169);
+    height: 793px;
+    width: 30%;
+    text-align: center;
+    
+}
+#Rysunek{
+    width: 70%;
+    height: 793px;
+    float: left;
+}
+
+.Button{
+    border-radius: 10px;
+    color: #b9b9b9;
+    background-color: #6d6a6a;
+    padding: 5px;
+    margin: 10px;
+}
+.Button:hover{
+    background-color: #3f3e3e;
+}
+a{
+    text-decoration: none;
+}
+
+#Form{
+    text-align: center;
+    background-color: rgb(164, 175, 169);
+    height: 793px;
+    position: relative;
+}
+form{
+    padding: 20px;
+}
+input[type=text]{
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+    color: rgb(0, 46, 46);
+    border: #3f3e3e 1px solid;
+}
+
+input[type=submit]{
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+    color: rgb(0, 46, 46);
+    border: #3f3e3e 1px solid;
+    width: 200px;
+    font-size: large;
+    transition: 200ms;
+}
+
+input[type=submit]:hover{
+    background-color: #3f3e3e;
+    border: #c9c7c7 1px solid;
+}
+
+#BackButton{
+    border-radius: 10px;
+    color: #b9b9b9;
+    background-color: #6d6a6a;
+    padding: 5px;
+    margin: 10px;
+    max-width: 200px;
+    margin: 0 auto;
+}
