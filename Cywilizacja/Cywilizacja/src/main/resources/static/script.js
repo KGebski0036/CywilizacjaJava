@@ -1,5 +1,3 @@
-
-
 function load(){
     var waterBar = document.getElementById("waterBar");
     var foodBar = document.getElementById("foodBar");
@@ -24,3 +22,24 @@ function load(){
 }
 
 window.onload = load;
+
+function TownHailClicked()
+{
+    ShowHelperWindow("Town hall", "townhail.png", "Zbudowanie twierdzy pozwoli na zbudowanie innych budowli oraz zwiększenie maksymalnej liczby zasobów.");
+}
+function CloseHelperWindow()
+{
+    var window = document.getElementById("additionalWindow");
+    window.style.display = "none";
+}
+function ShowHelperWindow(title, img, text){
+    var window = document.getElementById("additionalWindow");
+    var titleEl = document.getElementById("WindowTitle");
+    var imgEl = document.getElementById("ViewImgScr");
+    var textEl = document.getElementById("TextInWindow");
+
+    titleEl.innerText = title;
+    imgEl.src = "image//buildings/" + img;
+    textEl.innerText = text;
+    window.style.display = "block";
+}

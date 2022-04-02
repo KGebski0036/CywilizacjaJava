@@ -34,16 +34,88 @@ body{
     width: 0;
     transition: width 0.5s ease-in;
 }
+
 #bars{
     height: 80px;
     background-color: rgb(6, 2, 49);
     border-bottom: rgb(4, 89, 104) solid 5px;
 
 }
+
 .resource_icon{
     height: 50px;
     width: 50px;
     margin-top: 10px;
     margin-left: 80px;
     float: left;
+}
+
+#townHail{
+    position: absolute;
+    top: 200px;
+    left: 700px;
+    width: 300px;
+    height: 300px;
+}
+
+#townHail > button{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+}
+
+#additionalWindow{
+    position: absolute;
+    top: 200px;
+    left: 400px;
+    width: 1000px;
+    height: 500px;
+    background-color: rgb(33, 6, 122);
+    display: none;
+    text-align: center;
+    color: rgb(190, 162, 2);
+    border: rgb(6, 14, 10) 5px solid;
+}
+#midOfWindow{
+    width: 100%;
+    height: 300px;
+    background-color: gold;
+}
+#button1{
+    margin: 20px;
+    width: 150px;
+    height: 50px;
+    border: gold solid 2px;
+    background-color: rgb(33, 6, 122);
+    float: left;
+    font-size: 20px;
+    margin-left: 100px;
+    color: gold;
+}
+#button2{
+    margin: 20px;
+    width: 150px;
+    height: 50px;
+    border: gold solid 2px;
+    background-color: rgb(33, 6, 122);
+    float: left;
+    font-size: 20px;
+    margin-left: 380px;
+    color: gold;
+}
+
+#ViewImg{
+    width: 300px;
+    height: 300px;
+    float: left;
+    background-color: rgb(33, 6, 122);
+}
+
+#TextInWindow{
+    float: left;
+    width: 695px;
+    height: 300px;
+    margin-left: 5px;    
+    background-color: rgb(33, 6, 122);
 }
